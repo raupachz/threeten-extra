@@ -31,10 +31,40 @@
  */
 package org.threeten.extra;
 
+import java.text.MessageFormat;
+import java.time.Period;
+import java.time.temporal.TemporalAmount;
+import java.time.temporal.TemporalUnit;
+import org.junit.Ignore;
+
+import org.junit.Test;
+
 /**
  * Test class.
  */
 public class TestDecimalHours {
+    
+    @Test @Ignore
+    public void test_minutes_to_decimals() {
+        for (int i = 0; i < 60; i++) {
+            int decimals = (int) (i / 60.0 * 100 + 0.5);
+            System.out.println(MessageFormat.format("{1},", i, decimals));
+        }
+    }
+    
+    @Test
+    public void test_something() {
+        // TemporalAmount amount = Duration.ofHours(1);
+        
+        TemporalAmount amount = Period.ofYears(1).plusDays(1);
+        
+        for (TemporalUnit unit : amount.getUnits()) {
+            long value = amount.get(unit);
+            System.out.println(value + " " + unit);
+        }
+       
+    }
+    
     
     
     
